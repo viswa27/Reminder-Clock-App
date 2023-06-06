@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Inter&family=Manrope&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/bauhaus-93" rel="stylesheet">
+    <!-- <link href="https://fonts.cdnfonts.com/css/bauhaus-93" rel="stylesheet"> -->
+    <script src="Script.js"></script>
 </head>
 
 <body>
@@ -18,20 +19,20 @@
     <div class="sright">
         <div class="content">The message and Image will change according to the time</div>
     </div>
-    <div class="time">
+    <div class="time" onmouseover="popup1()" onmouseout="popdown1()">
         <div class="t">Time</div>
-        <div class="hour timebox"><span class="num">10</span><br>hours</div>
+        <div class="hour timebox"><span class="num" id="hr"></span><br>hours</div>
         <div class="col1 col"><b>:</b></div>
-        <div class="mins timebox"><span class="num">00</span><br>mins</div>
+        <div class="mins timebox"><span class="num" id="min"></span><br>mins</div>
         <div class="col2 col"><b>:</b></div>
-        <div class="secs timebox"><span class="num">01</span><br>secs</div>
-        <div class="am-pm timebox">AM</div>
+        <div class="secs timebox"><span class="num" id="sec"></span><br>secs</div>
+        <div class="am-pm timebox" id="AM-PM"></div>
     </div>
     <div class="below1"></div>
     <div class="below2"></div>
     <div class="point-arrow"></div>
     <div class="enjoy">
-        <h1>GRAB SOME HEALTHY BREAKFAST!!!</h1>
+        <h1 id="enjoy">GRAB SOME HEALTHY BREAKFAST!!!</h1>
     </div>
     <div class="pic"></div>
     <div class="schedule">
@@ -44,27 +45,27 @@
                     <option value="8 AM - 9 AM">8 AM - 9 AM</option>
                     <option value="9 AM - 10 AM">9 AM - 10 AM</option>
                     <option value="10 AM - 11 AM" selected>10 AM - 11 AM</option>
-                    <option value="11 AM - 12 AM">11 AM - 12 AM</option>
+                    <option value="11 AM - 12 PM">11 AM - 12 PM</option>
                 </select><br>
                 <div class="vr"></div>
                 <label for="wakeup">
                     <div class="slogo lunch"></div>Set lunch time
                 </label>
                 <select name="timer" id="lunch" class="stime slunch">
-                    <option value="11 AM - 12 PM">11 AM - 12 PM</option>
-                    <option value="12 PM - 1 PM" selected>12 PM - 1 PM</option>
-                    <option value="1 PM - 2 PM">1 PM - 2 PM</option>
+                    <option value="12 PM - 1 PM">12 PM - 1 PM</option>
+                    <option value="1 PM - 2 PM" selected>1 PM - 2 PM</option>
                     <option value="2 PM - 3 PM">2 PM - 3 PM</option>
+                    <option value="3 PM - 4 PM">3 PM - 4 PM</option>
                 </select><br>
                 <div class="vr"></div>
                 <label for="wakeup">
                     <div class="slogo nap"></div>Set nap time
                 </label>
                 <select name="timer" id="nap" class="stime snap">
-                    <option value="3 PM - 4 PM">3 PM - 4 PM</option>
-                    <option value="4 PM - 5 PM" selected>4 PM - 5 PM</option>
-                    <option value="5 PM - 6 PM">5 PM - 6 PM</option>
+                    <option value="4 PM - 5 PM">4 PM - 5 PM</option>
+                    <option value="5 PM - 6 PM" selected>5 PM - 6 PM</option>
                     <option value="6 PM - 7 PM">6 PM - 7 PM</option>
+                    <option value="7 PM - 8 PM">7 PM - 8 PM</option>
                 </select><br>
                 <div class="vr"></div>
                 <label for="wakeup">
@@ -80,12 +81,12 @@
         </div>
     </div>
     <div class="greetings">
-        <h1>GOOD MORNING!! WAKE UP !!</h1>
+        <h1 id="greetings">GOOD MORNING!! WAKE UP !!</h1>
     </div>
-    <button>Set Alarm</button>
+    <button onclick="setAlarm()" onmouseover="popup2()" onmouseout="popdown2()">Set Alarm</button>
     <div class="output">
-        <div class="tout">Wake Up Time : 10AM - 11AM<br> Lunch Time : 12PM - 1PM<br> Nap Time : 4PM - 5PM<br> Night Time
-            : 8PM - 9AM</div>
+        <div class="tout">Wake Up Time : <span id="wakeupTime"></span><br> Lunch Time : <span id="lunchTime"></span><br> Nap Time : <span id="napTime"></span><br> Night Time
+            : <span id="nightTime"></span></div>
     </div>
     <div class="topspeech">
         <div class="stop">Time will be updated here after clicking on "Set Alarm"</div>
