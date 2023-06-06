@@ -55,9 +55,11 @@ function setAlarm() {
 
 function popup1() {
     document.getElementsByClassName("sright")[0].style.display = "block";
+    document.getElementsByClassName("point-arrow")[0].style.display = "block";
 }
 function popdown1() {
     document.getElementsByClassName("sright")[0].style.display = "none";
+    document.getElementsByClassName("point-arrow")[0].style.display = "none";
 }
 
 function popup2() {

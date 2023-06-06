@@ -164,6 +164,7 @@ body {
 
 .point-arrow {
   position: absolute;
+  display: none;
   top: 107px;
   left: 1250px;
   width: 55px;
