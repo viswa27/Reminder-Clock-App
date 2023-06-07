@@ -5,17 +5,6 @@ function clock(){
     let seconds = time.getSeconds();
     let amPm = "AM";
     let newImage=document.getElementsByClassName("pic")[0];
-    if(hour > 12){
-        hour -= 12;
-        amPm = "PM"
-    }
-    let hrs = hour.toString().padStart(2, '0');
-    document.getElementById("hr").textContent = hrs;
-    let mins = minutes.toString().padStart(2,'0');
-    document.getElementById("min").textContent = mins;
-    let secs = seconds.toString().padStart(2,'0');
-    document.getElementById("sec").textContent = secs;
-    document.getElementById("AM-PM").textContent = amPm;
 
     switch (true) {
         case (hour >= 12 && hour < 16):
@@ -34,11 +23,22 @@ function clock(){
           document.getElementById('greetings').textContent = "GOOD NIGHT !!";
           break;
         default:
-          newImage.style.backgroundImage = 'url(Component 30 - 1.svg)';
+          newImage.style.backgroundImage = 'url(morning.svg)';
           document.getElementById('enjoy').textContent = "GRAB SOME HEALTHY BREAKFAST!!!";
           document.getElementById('greetings').textContent = "GOOD MORNING!! WAKE UP !!";
           break;
     }
+    if(hour > 12){
+        hour -= 12;
+        amPm = "PM"
+    }
+    let hrs = hour.toString().padStart(2, '0');
+    document.getElementById("hr").textContent = hrs;
+    let mins = minutes.toString().padStart(2,'0');
+    document.getElementById("min").textContent = mins;
+    let secs = seconds.toString().padStart(2,'0');
+    document.getElementById("sec").textContent = secs;
+    document.getElementById("AM-PM").textContent = amPm;
 }
 setInterval(clock, 1000);
 
@@ -55,11 +55,9 @@ function setAlarm() {
 
 function popup1() {
     document.getElementsByClassName("sright")[0].style.display = "block";
-    document.getElementsByClassName("point-arrow")[0].style.display = "block";
 }
 function popdown1() {
     document.getElementsByClassName("sright")[0].style.display = "none";
-    document.getElementsByClassName("point-arrow")[0].style.display = "none";
 }
 
 function popup2() {
@@ -68,4 +66,3 @@ function popup2() {
 function popdown2() {
     document.getElementsByClassName("topspeech")[0].style.display = "none";
 }
-
