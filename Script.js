@@ -1,52 +1,3 @@
-function clock() {
-  let time = new Date();
-  let hour = time.getHours();
-  let minutes = time.getMinutes();
-  let seconds = time.getSeconds();
-  let amPm = "AM";
-  let newImage = document.getElementsByClassName("pic")[0];
-
-  switch (true) {
-    case hour >= 12 && hour < 16:
-      newImage.style.backgroundImage = "url(afternoon.svg)";
-      document.getElementById("enjoy").textContent = "LET'S HAVE SOME LUNCH !!";
-      document.getElementById("greetings").textContent =
-        "GOOD AFTERNOON !! TAKE SOME SLEEP";
-      break;
-    case hour >= 16 && hour < 20:
-      newImage.style.backgroundImage = "url(evening.png)";
-      document.getElementById("enjoy").textContent =
-        "STOP YAWNING, GET SOME TEA.. ITS JUST EVENING!";
-      document.getElementById("greetings").textContent = "GOOD EVENING !!";
-      break;
-    case hour >= 20 || hour < 6:
-      newImage.style.backgroundImage = "url(goodnight_image.svg)";
-      document.getElementById("enjoy").textContent =
-        "CLOSE YOUR EYES AND GO TO SLEEP";
-      document.getElementById("greetings").textContent = "GOOD NIGHT !!";
-      break;
-    default:
-      newImage.style.backgroundImage = "url(morning.svg)";
-      document.getElementById("enjoy").textContent =
-        "GRAB SOME HEALTHY BREAKFAST!!!";
-      document.getElementById("greetings").textContent =
-        "GOOD MORNING!! WAKE UP !!";
-      break;
-  }
-
-  if (hour > 12) {
-    hour -= 12;
-    amPm = "PM";
-  }
-  let hrs = hour.toString().padStart(2, "0");
-  document.getElementById("hr").textContent = hrs;
-  let mins = minutes.toString().padStart(2, "0");
-  document.getElementById("min").textContent = mins;
-  let secs = seconds.toString().padStart(2, "0");
-  document.getElementById("sec").textContent = secs;
-  document.getElementById("AM-PM").textContent = amPm;
-}
-setInterval(clock, 1000);
 
 function setAlarm() {
   let wake = document.getElementById("wakeup").value;
@@ -59,9 +10,152 @@ function setAlarm() {
   document.getElementById("nightTime").textContent = night;
 }
 
+let newImage = document.getElementsByClassName("pic")[0];
+
+function clock() {
+  let time = new Date();
+  let hour = time.getHours();
+  let minutes = time.getMinutes();
+  let seconds = time.getSeconds();
+  let amPm = "AM";
+  let wake = document.getElementById("wakeup").value;
+  let lunch = document.getElementById("lunch").value;
+  let nap = document.getElementById("nap").value;
+  let night = document.getElementById("night").value;
+  let alarmHourNight = parseInt(night.split(' ')[0].substring(0, 2));
+  let alarmAmPmNight = night.split(' ')[1];
+  let alarmHourNap = parseInt(nap.split(' ')[0].substring(0, 2));
+  let alarmAmPmNap = nap.split(' ')[1];
+  let alarmHourLunch = parseInt(lunch.split(' ')[0].substring(0, 2));
+  let alarmAmPmLunch = lunch.split(' ')[1];
+  let alarmHourWake = parseInt(wake.split(' ')[0].substring(0, 2));
+  let alarmAmPmWake = wake.split(' ')[1];
+
+  if (hour >= 12) {
+    amPm = "PM";
+    if (hour > 12) {
+      hour -= 12;
+    }
+  }
+
+  let greetings = "";
+  let enjoyText = "";
+
+  if (hour < 4 && hour <= 12 && amPm === "PM") {
+    newImage.style.backgroundImage = "url(afternoon.svg)";
+    greetings = "GOOD AFTERNOON !! TAKE SOME SLEEP";
+    enjoyText = "LET'S HAVE SOME LUNCH !!";
+    if (alarmHourNight === hour && alarmAmPmNight === amPm) {
+      newImage.style.backgroundImage = "url(goodnight_image.svg)";
+      greetings = "GOOD NIGHT!!";
+      enjoyText = "CLOSE YOUR EYES AND GO TO SLEEP";
+    }
+    else if (alarmHourNap === hour && alarmAmPmNap === amPm){
+      newImage.style.backgroundImage = "url(evening.png)";
+      greetings = "GOOD EVENING !!";
+      enjoyText = "STOP YAWNING, GET SOME TEA.. ITS JUST EVENING!";
+    }
+    else if (alarmHourLunch === hour && alarmAmPmLunch === amPm){
+      newImage.style.backgroundImage = "url(afternoon.svg)";
+      greetings = "GOOD AFTERNOON !! TAKE SOME SLEEP";
+      enjoyText = "LET'S HAVE SOME LUNCH !!";
+    }
+    else if (alarmHourWake === hour && alarmAmPmWake === amPm){
+      newImage.style.backgroundImage = "url(morning.svg)";
+      greetings = "GOOD MORNING!! WAKE UP !!";
+      enjoyText = "GRAB SOME HEALTHY BREAKFAST!!!";
+    }
+  } else if (hour >= 4 && hour < 8 && amPm === "PM") {
+    newImage.style.backgroundImage = "url(evening.png)";
+    greetings = "GOOD EVENING !!";
+    enjoyText = "STOP YAWNING, GET SOME TEA.. ITS JUST EVENING!";
+    if (alarmHourNight === hour && alarmAmPmNight === amPm) {
+      newImage.style.backgroundImage = "url(goodnight_image.svg)";
+      greetings = "GOOD NIGHT!!";
+      enjoyText = "CLOSE YOUR EYES AND GO TO SLEEP";
+    }
+    else if (alarmHourNap === hour && alarmAmPmNap === amPm){
+      newImage.style.backgroundImage = "url(evening.png)";
+      greetings = "GOOD EVENING !!";
+      enjoyText = "STOP YAWNING, GET SOME TEA.. ITS JUST EVENING!";
+    }
+    else if (alarmHourLunch === hour && alarmAmPmLunch === amPm){
+      newImage.style.backgroundImage = "url(afternoon.svg)";
+      greetings = "GOOD AFTERNOON !! TAKE SOME SLEEP";
+      enjoyText = "LET'S HAVE SOME LUNCH !!";
+    }
+    else if (alarmHourWake === hour && alarmAmPmWake === amPm){
+      newImage.style.backgroundImage = "url(morning.svg)";
+      greetings = "GOOD MORNING!! WAKE UP !!";
+      enjoyText = "GRAB SOME HEALTHY BREAKFAST!!!";
+    }
+  } else if ((hour >= 8 && amPm === "PM") || (hour < 6 && amPm === "AM")) {
+    newImage.style.backgroundImage = "url(goodnight_image.svg)";
+    greetings = "GOOD NIGHT !!";
+    enjoyText = "CLOSE YOUR EYES AND GO TO SLEEP";
+    if (alarmHourNight === hour && alarmAmPmNight === amPm) {
+      newImage.style.backgroundImage = "url(goodnight_image.svg)";
+      greetings = "GOOD NIGHT!!";
+      enjoyText = "CLOSE YOUR EYES AND GO TO SLEEP";
+    }
+    else if (alarmHourNap === hour && alarmAmPmNap === amPm){
+      newImage.style.backgroundImage = "url(evening.png)";
+      greetings = "GOOD EVENING !!";
+      enjoyText = "STOP YAWNING, GET SOME TEA.. ITS JUST EVENING!";
+    }
+    else if (alarmHourLunch === hour && alarmAmPmLunch === amPm){
+      newImage.style.backgroundImage = "url(afternoon.svg)";
+      greetings = "GOOD AFTERNOON !! TAKE SOME SLEEP";
+      enjoyText = "LET'S HAVE SOME LUNCH !!";
+    }
+    else if (alarmHourWake === hour && alarmAmPmWake === amPm){
+      newImage.style.backgroundImage = "url(morning.svg)";
+      greetings = "GOOD MORNING!! WAKE UP !!";
+      enjoyText = "GRAB SOME HEALTHY BREAKFAST!!!";
+    }
+  } else {
+    newImage.style.backgroundImage = "url(morning.svg)";
+    greetings = "GOOD MORNING!! WAKE UP !!";
+    enjoyText = "GRAB SOME HEALTHY BREAKFAST!!!";
+    if (alarmHourNight === hour && alarmAmPmNight === amPm) {
+      newImage.style.backgroundImage = "url(goodnight_image.svg)";
+      greetings = "GOOD NIGHT!!";
+      enjoyText = "CLOSE YOUR EYES AND GO TO SLEEP";
+    }
+    else if (alarmHourNap === hour && alarmAmPmNap === amPm){
+      newImage.style.backgroundImage = "url(evening.png)";
+      greetings = "GOOD EVENING !!";
+      enjoyText = "STOP YAWNING, GET SOME TEA.. ITS JUST EVENING!";
+    }
+    else if (alarmHourLunch === hour && alarmAmPmLunch === amPm){
+      newImage.style.backgroundImage = "url(afternoon.svg)";
+      greetings = "GOOD AFTERNOON !! TAKE SOME SLEEP";
+      enjoyText = "LET'S HAVE SOME LUNCH !!";
+    }
+    else if (alarmHourWake === hour && alarmAmPmWake === amPm){
+      newImage.style.backgroundImage = "url(morning.svg)";
+      greetings = "GOOD MORNING!! WAKE UP !!";
+      enjoyText = "GRAB SOME HEALTHY BREAKFAST!!!";
+    }
+  }
+
+  document.getElementById("greetings").textContent = greetings;
+  document.getElementById("enjoy").textContent = enjoyText;
+
+  document.getElementById("hr").textContent = hour.toString().padStart(2, "0");
+  document.getElementById("min").textContent = minutes.toString().padStart(2, "0");
+  document.getElementById("sec").textContent = seconds.toString().padStart(2, "0");
+  document.getElementById("AM-PM").textContent = amPm;
+}
+
+
+
+setInterval(clock, 1000);
+
 function popup1() {
   document.getElementsByClassName("sright")[0].style.display = "block";
 }
+
 function popdown1() {
   document.getElementsByClassName("sright")[0].style.display = "none";
 }
@@ -69,6 +163,8 @@ function popdown1() {
 function popup2() {
   document.getElementsByClassName("topspeech")[0].style.display = "block";
 }
+
 function popdown2() {
   document.getElementsByClassName("topspeech")[0].style.display = "none";
 }
+
