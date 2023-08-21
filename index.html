@@ -14,21 +14,23 @@
 
 <body>
     <div class="logo"></div>
-    <div class="sright">
-        <div class="content">The message and Image will change according to the time</div>
+    <div class="allTime">
+        <div class="sright">
+            <div class="content">The message and Image will change according to the time</div>
+        </div>
+        <div class="time" onmouseover="popup1()" onmouseout="popdown1()">
+            <div class="t">Time</div>
+            <div class="hour timebox"><span class="num" id="hr"></span><br>hours</div>
+            <div class="col1 col"><b>:</b></div>
+            <div class="mins timebox"><span class="num" id="min"></span><br>mins</div>
+            <div class="col2 col"><b>:</b></div>
+            <div class="secs timebox"><span class="num" id="sec"></span><br>secs</div>
+            <div class="am-pm timebox" id="AM-PM"></div>
+        </div>
+        <div class="below1"></div>
+        <div class="below2"></div>
+        <!-- <div class="point-arrow"></div> -->    
     </div>
-    <div class="time" onmouseover="popup1()" onmouseout="popdown1()">
-        <div class="t">Time</div>
-        <div class="hour timebox"><span class="num" id="hr"></span><br>hours</div>
-        <div class="col1 col"><b>:</b></div>
-        <div class="mins timebox"><span class="num" id="min"></span><br>mins</div>
-        <div class="col2 col"><b>:</b></div>
-        <div class="secs timebox"><span class="num" id="sec"></span><br>secs</div>
-        <div class="am-pm timebox" id="AM-PM"></div>
-    </div>
-    <div class="below1"></div>
-    <div class="below2"></div>
-    <div class="point-arrow"></div>
     <div class="enjoy">
         <h1 id="enjoy"></h1>
     </div>
