@@ -552,7 +552,7 @@ button:hover {
   }
 }
 
-@media (max-width: 1280px) and (min-width: 700px) {
+@media (max-width: 1850px) and (min-width: 600px) {
   body {
     margin: 2%;
   }
