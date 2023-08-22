@@ -162,9 +162,11 @@ function popdown1() {
 
 function popup2() {
   document.getElementsByClassName("topspeech")[0].style.display = "block";
+  document.getElementById("button").textContent = "Party Time";
 }
 
 function popdown2() {
   document.getElementsByClassName("topspeech")[0].style.display = "none";
+  document.getElementById("button").textContent = "Set Alarm";
 }
 
